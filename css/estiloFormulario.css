@@ -1,0 +1,113 @@
+/* CONTENEDOR DEL FOMULARIO */
+.formulario {
+  font-size: 15px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height:100%;
+  
+  
+}
+/* FORM - CONTENEDOR DE DIVS "LABEL E INPUT" */
+.form {
+  background-color: white;
+  padding: 10px;
+  width: 45%;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  transition: 0.5s;
+  
+}
+.form input[type="text"],input[type="date"]  , .form textarea{
+  font-weight: 500;
+  font-size: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #f1f1f1;
+  margin-top: 10px;
+}
+.form input[type="text"]:focus, .form input[type="date"]:focus,
+.form textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form textarea{
+  resize:none;
+}
+
+/* FORM - BOTONES */
+.input {
+  width: 80%;
+  margin-top: 0px;
+  
+
+
+}
+input[type="button"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  font-size:15px;
+  font-weight: bold;
+  margin: 8px 0;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  
+  
+}
+input[type="button"]:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 10px rgba(17, 29, 48, 0.26);
+  transition: 0.3s;
+}
+#botonEliminar{
+  background-color:#d24b50;
+}
+#botonEliminar:hover{
+  background-color:#9e373b;
+}
+#botonActualizar{
+  background-color:#478aca;
+}
+#botonActualizar:hover{
+  background-color:#326a9e;
+}
+
+/*  DIV RESULTADO */
+
+.contenedor-resultado{
+  transition: 1s;
+  width:80%;
+  height: 100%;
+  background-color:#c8f5d6;
+  border-left: 8px solid #57d377;
+  border-radius: 5px;
+  padding: 10px 0px 10px 0px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.contenedor-resultado *{
+  padding: 0px 5px 0px 5px;
+}
+.contenedor-resultado p{
+  color: #45a049;
+  font-size: 18px;
+}
+.eliminar{
+  background-color:#fce0e3;
+  border-left: 8px solid #ee3b5c;
+}
+.eliminar p{
+  color: #ee3b5c;
+}
+

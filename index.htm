@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+    <link rel="shortcut icon" href="img/dart.png" />
+
+    <!-- LINK Y SCRIPT -->
+    <!-- TIPOGRAFIAS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+    <!-- JS -->
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="js/funciones.js"
+    ></script>
+    <!-- TERMINA LINK Y SCT -->
+  </head>
+
+  <body>
+    <!-- CABECERA -->
+    <header class="header">
+      <figure class="figura">
+        <img src="img/blanco.png" width="60" alt="" />
+        <figcaption class="fig-texto">Sofenix</figcaption>
+      </figure>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <!-- PANEL NAVEGADOR -->
+      <div class="main_nav">
+        <ul>
+          <li>
+            <a href="#" onclick="callMenu('menuProductos.html')">Productos</a>
+          </li>
+          <li>
+            <a href="#" onclick="callMenu('menuClientes.html')">Clientes</a>
+          </li>
+          <li>
+            <a href="#" onclick="callMenu('menuServicios.html')">Servicios</a>
+          </li>
+          <li>
+            <a href="#" onclick="callMenu('menuProveedores.html')">Proveedores</a>
+          </li>
+        </ul>
+      </div>
+      <!-- CONTENIDO  -->
+     
+      <div class="contiene">
+        <!-- MENU DINAMICO -->
+        <div id="main_menu"></div>
+        <!-- CONTENIDO DINAMICO -->
+        <div id="main_contenido"></div>
+      </div>
+    </main>
+    <!-- PIE -->
+    <footer>
+      <figure class="figura">
+        <img src="img/blanco.png" width="50" alt="" />
+      </figure>
+    </footer>
+  </body>
+</html>

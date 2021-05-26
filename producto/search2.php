@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/estilo.css" type="text/css" />
-    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/funciones.js"></script>
     <link rel="stylesheet" href="css/estiloFormulario.css" type="text/css" />
 
 </head>
@@ -17,7 +15,7 @@
     <!-- CONTENEDOR DEL RESULTADO A PHP -->
     <div class="contenedor-resultado">
         <figure class="figura">
-            <img src="img/aceptar3.png" width="30" alt="" />
+            <img src="img/aceptar3.png" id="img1" width="30" alt="" />
         </figure>
 
 
@@ -57,6 +55,9 @@
                 return $resultado;
             }/* MENSAJE POR SI NO ENCONTRO NADA */ else {
                 echo "<p>No hay producto con esos datos</p>";
+                echo "<script> $('.contenedor-resultado').addClass('eliminar');
+                            $('#img1').attr('src', 'img/cerrar.png');      
+                        </script>";
             }
         }
         /* VALIDACION SI LOS DOS CAMPOS ESTAN COMPLETOS */
@@ -89,7 +90,10 @@
         /* PONEMOS EL ARRAY EN UNA VAR DE JS Y LA MANDAMOS POR POST CON .LOAD*/
         /* UTIL, SOLO PARA MANDAR A LLAMAR A LA TABLA Y PASARLE EL ARRAY DE LA CONSULTA */
         var result = <?php echo json_encode($resultado) ?>;
-        $("#tabla-p").load("producto/tabla.php",{resultado: result} );
+        $("#tabla-p").load("producto/tabla.php", {
+            resultado: result
+        });
     </script>
 </body>
+
 </html>

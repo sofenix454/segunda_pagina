@@ -1,42 +1,3 @@
-function Registrar(nombre,marca,almacen,cantidad, descripcion, precio, fecha)
-{
-    cadena="nombre=" + nombre +
-           "&marca=" + marca +
-           "&almacen=" + almacen +
-           "&cantidad=" +cantidad +
-           "&descripcion=" + descripcion +
-           "&precio=" + precio +
-           "&fecha=" + fecha;
-      
-    //$("#respuesta").html("<img src="loader.gif" /> Por favor espera un momento");
-    $.ajax({
-        type: "POST",
-        //dataType: 'html',
-        url: "producto/new2.php",
-        data: cadena,
-        success: function(){
-           
-        }
-    });
-}
-
-function Limpiar()
-{
-    $("#nombre").val("");
-    $("#direccion").val("");
-    
-}
-function pasarDatos(datos){
-    d=datos.split('||');
-    $('#codigo').val(d[0]);
-    $('#nombreu').val(d[1]);
-    $('#direccionu').val(d[2]);
-}
-
-
-
-
-
 /* TRAE FORMULARIOS DE PRODUCTOS */
 function seccion(mensaje) {
   $.ajax({
@@ -50,35 +11,37 @@ function seccion(mensaje) {
 }
 
 /* -------- RESULTADO FORM NUEVO PRODUCTO */
-function nuevoProducto() {
-  var nombre = $("#nombre").val();
-  var code = $("#code").val();
-  $.ajax({
-    url: "producto/new2.php",
-    cache: false,
-    type: "POST",
-    data: "nombre=" + nombre + "&code=" + code,
-    success: function (datos) {
-      $("#resultado").html(datos);
-    },
-  });
-}
-
 function nuevoProductoR() {
-  var nombre = $('#nombre').val();
-  var marca = $('#marca').val();
-  var almacen = $('#almacen').val();
-  var cantidad = $('#cantidad').val();
-  var descripcion = $('#descripcion').val();
-  var precio = $('#precio').val();
-  var fecha = $('#fecha').val();
+  var nombre = $("#nombre").val();
+  var marca = $("#marca").val();
+  var almacen = $("#almacen").val();
+  var cantidad = $("#cantidad").val();
+  var descripcion = $("#descripcion").val();
+  var precio = $("#precio").val();
+  var fecha = $("#fecha").val();
   $.ajax({
     url: "producto/new2.php",
     cache: false,
     type: "POST",
-    data:"nombre="+nombre +"&marca="+marca+"&almacen="+almacen+"&cantidad="+cantidad+"&descripcion="+descripcion+"&precio="+precio+"&fecha="+fecha,
+    data:
+      "nombre=" +
+      nombre +
+      "&marca=" +
+      marca +
+      "&almacen=" +
+      almacen +
+      "&cantidad=" +
+      cantidad +
+      "&descripcion=" +
+      descripcion +
+      "&precio=" +
+      precio +
+      "&fecha=" +
+      fecha,
     success: function (datos) {
       $("#resultado").html(datos);
+      $('#resultado').show();
+      $('#resultado').delay(3000).hide(100);  
     },
   });
 }
@@ -86,47 +49,46 @@ function nuevoProductoR() {
 /* -------- RESULTADO FORM CONSULTAR */
 
 function consultarR() {
-  var codigo = $('#codigo').val();
-  var nombre = $('#nombre').val();
+  var codigo = $("#codigo").val();
+  var nombre = $("#nombre").val();
   $.ajax({
     url: "producto/search2.php",
     cache: false,
     type: "POST",
-    data:"codigo="+codigo+"&nombre="+nombre,
+    data: "codigo=" + codigo + "&nombre=" + nombre,
     success: function (datos) {
       $("#resultado").html(datos);
     },
   });
 }
-
-
-function consultar() {
-  var codigo = $("#nombre").val();
-  var code = $("#code").val();
-  $.ajax({
-    url: "producto/search2.php",
-    cache: false,
-    type: "POST",
-    data: "codigo=" + codigo + "&code=" + code,
-    success: function (datos) {
-      $("#resultado").html(datos);
-    },
-  });
-}
-
-
 /* -------- RESULTADO FORM ELMINAR */
+function cargaVentanaEliminar(datos) {
+  d = datos.split("||");
+  $.ajax({
+    url: "producto/dele.php",
+    cache: false,
+    type: "POST",
+    success: function (datos) {
+      $("#main_contenido").html(datos);
+      $("#codigo").val(d[0]);
+      $("#nombre").val(d[1]);
+    },
+  });
+}
+
 function eliminar() {
   if (confirm("¿Seguro que deseas eliminar este elemento?")) {
-    var codigo = $("#nombre").val();
-    var code = $("#codigo").val();
+    var nombre = $("#nombre").val();
+    var codigo = $("#codigo").val();
     $.ajax({
       url: "producto/dele2.php",
       cache: false,
       type: "POST",
-      data: "nombre=" + codigo + "&code=" + code,
+      data: "nombre=" + nombre + "&codigo=" + codigo,
       success: function (datos) {
         $("#resultado").html(datos);
+        $('#resultado').show();
+        $('#resultado').delay(4000).hide(100);
       },
     });
   } else {
@@ -134,22 +96,62 @@ function eliminar() {
   }
 }
 /* -------- RESULTADO FORM ACTUALIZAR */
-function actualizar() {
-  if (confirm("¿Seguro que deseas actualizar este elemento?")) {
-    var codigo = $("#nombre").val();
-    var code = $("#codigo").val();
-    $.ajax({
-      url: "producto/update2.php",
-      cache: false,
-      type: "POST",
-      data: "nombre=" + codigo + "&code=" + code,
-      success: function (datos) {
-        $("#resultado").html(datos);
-      },
-    });
-  } else {
-    alert("Operacion cancelada");
-  }
+
+function cargaVentanaActualizar(datos) {
+  d = datos.split("||");
+  $.ajax({
+    url: "producto/update.php",
+    cache: false,
+    type: "POST",
+    success: function (datos) {
+      $("#main_contenido").html(datos);
+      $("#codigo").val(d[0]);
+      $("#nombre").val(d[1]);
+      $("#marca").val(d[2]);
+      $("#almacen").val(d[3]);
+      $("#cantidad").val(d[4]);
+      $("#descripcion").val(d[5]);
+      $("#precio").val(d[6]);
+      $("#fecha").val(d[7]);
+    },
+  });
+}
+function actualizarR() {
+  var codigo = $("#codigo").val();
+  var nombre = $("#nombre").val();
+  var marca = $("#marca").val();
+  var almacen = $("#almacen").val();
+  var cantidad = $("#cantidad").val();
+  var descripcion = $("#descripcion").val();
+  var precio = $("#precio").val();
+  var fecha = $("#fecha").val();
+  $.ajax({
+    url: "producto/update2.php",
+    cache: false,
+    type: "POST",
+    data:
+      "codigo=" +
+      codigo +
+      "&nombre=" +
+      nombre +
+      "&marca=" +
+      marca +
+      "&almacen=" +
+      almacen +
+      "&cantidad=" +
+      cantidad +
+      "&descripcion=" +
+      descripcion +
+      "&precio=" +
+      precio +
+      "&fecha=" +
+      fecha,
+    success: function (datos) {
+      $("#resultado").html(datos);
+      $('#resultado').show();
+       $('#resultado').delay(4000).hide(100);
+    },
+  });
 }
 
 /* TRAE EL MENU DE NAVEGACION DE LOS APARTADOS */

@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
   <link rel="stylesheet" href="css/estiloFormulario.css" type="text/css" />
 
 </head>
@@ -23,13 +22,7 @@
   </form>
   <div class='input'><input type='button' id="botonNuevo" onclick="nuevoProductoR()"  value='GUARDAR'></div>
   <div id="resultado"></div>
-  <script>
-    $('#botonNuevo').click(function() {
-      $('#resultado').show();
-      $('#resultado').delay(3000).hide(100);;  
-    });
-  </script>
-
+ 
 </body>
 
 </html>

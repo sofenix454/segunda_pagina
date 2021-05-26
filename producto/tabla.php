@@ -8,7 +8,7 @@ $resultado =  $_POST['resultado'];
     <table class="estilo-tabla">
         <thead>
             <tr>
-                <th>req</th>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Marca</th>
                 <th>Almacen</th>
@@ -21,19 +21,19 @@ $resultado =  $_POST['resultado'];
 
 
             <?php
+            /* CAMBIA E 0 Y 1 POR CADA FOREACH PARA ASIGNAR EL ESTILO   */
             $cambiaClase = 0;
             foreach ($resultado as $fila) {
 
-                $datos = $fila['idproducto'] . "||" .
+                $datos = 
+                    $fila['idproducto'] . "||" .
                     $fila['nombre'] . "||" .
                     $fila['marca'] . "||" .
                     $fila['almacen'] . "||" .
                     $fila['cantidad'] . "||" .
                     $fila['descripcion'] . "||" .
                     $fila['precio'] . "||" .
-                    $fecha['fecha'];
-
-                // var_dump($datos);
+                    $fila['fecha'];
             ?>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@ $resultado =  $_POST['resultado'];
                     $cambiaClase = 1;
                 }
             ?>
-
+            
             <th> <?php echo ($fila['idproducto']) ?></th>
             <th> <?php echo ($fila['nombre']) ?></th>
             <th> <?php echo ($fila['marca']) ?></th>
@@ -55,9 +55,9 @@ $resultado =  $_POST['resultado'];
             <th> <?php echo ($fila['descripcion']) ?></th>
             <th> <?php echo ($fila['precio']) ?></th>
             <th> <?php echo ($fila['fecha']) ?></th>
-            <th class="btn-opciones"><button href="#footer" id="boton-editar" type="button" class="btn " data-toggle="modal" data-target="#editar" onclick="pasarDatos('<?php echo $datos ?>')">
+            <th class="btn-opciones"><button href="#footer" id="boton-editar" type="button" class="btn " data-toggle="modal" data-target="#editar" onclick="cargaVentanaActualizar('<?php echo $datos ?>')">
                     Editar
-                </button><span> </span><button type="button" id="boton-eliminar" class="btn btn-eliminar" onclick="pregunata('<?php echo $fila['idproducto'], $fila['nombre'] ?>')">
+                </button><span> </span><button type="button" id="boton-eliminar" class="btn btn-eliminar" onclick="cargaVentanaEliminar('<?php echo $datos ?>')">
                     Eliminar
                 </button></th>
             </tr>

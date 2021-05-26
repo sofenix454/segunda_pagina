@@ -1,3 +1,42 @@
+function Registrar(nombre,marca,almacen,cantidad, descripcion, precio, fecha)
+{
+    cadena="nombre=" + nombre +
+           "&marca=" + marca +
+           "&almacen=" + almacen +
+           "&cantidad=" +cantidad +
+           "&descripcion=" + descripcion +
+           "&precio=" + precio +
+           "&fecha=" + fecha;
+      
+    //$("#respuesta").html("<img src="loader.gif" /> Por favor espera un momento");
+    $.ajax({
+        type: "POST",
+        //dataType: 'html',
+        url: "producto/new2.php",
+        data: cadena,
+        success: function(){
+           
+        }
+    });
+}
+
+function Limpiar()
+{
+    $("#nombre").val("");
+    $("#direccion").val("");
+    
+}
+function pasarDatos(datos){
+    d=datos.split('||');
+    $('#codigo').val(d[0]);
+    $('#nombreu').val(d[1]);
+    $('#direccionu').val(d[2]);
+}
+
+
+
+
+
 /* TRAE FORMULARIOS DE PRODUCTOS */
 function seccion(mensaje) {
   $.ajax({
@@ -12,19 +51,55 @@ function seccion(mensaje) {
 
 /* -------- RESULTADO FORM NUEVO PRODUCTO */
 function nuevoProducto() {
-  var codigo = $("#nombre").val();
+  var nombre = $("#nombre").val();
   var code = $("#code").val();
   $.ajax({
     url: "producto/new2.php",
     cache: false,
     type: "POST",
-    data: "codigo=" + codigo + "&code=" + code,
+    data: "nombre=" + nombre + "&code=" + code,
     success: function (datos) {
       $("#resultado").html(datos);
     },
   });
 }
+
+function nuevoProductoR() {
+  var nombre = $('#nombre').val();
+  var marca = $('#marca').val();
+  var almacen = $('#almacen').val();
+  var cantidad = $('#cantidad').val();
+  var descripcion = $('#descripcion').val();
+  var precio = $('#precio').val();
+  var fecha = $('#fecha').val();
+  $.ajax({
+    url: "producto/new2.php",
+    cache: false,
+    type: "POST",
+    data:"nombre="+nombre +"&marca="+marca+"&almacen="+almacen+"&cantidad="+cantidad+"&descripcion="+descripcion+"&precio="+precio+"&fecha="+fecha,
+    success: function (datos) {
+      $("#resultado").html(datos);
+    },
+  });
+}
+
 /* -------- RESULTADO FORM CONSULTAR */
+
+function consultarR() {
+  var codigo = $('#codigo').val();
+  var nombre = $('#nombre').val();
+  $.ajax({
+    url: "producto/search2.php",
+    cache: false,
+    type: "POST",
+    data:"codigo="+codigo+"&nombre="+nombre,
+    success: function (datos) {
+      $("#resultado").html(datos);
+    },
+  });
+}
+
+
 function consultar() {
   var codigo = $("#nombre").val();
   var code = $("#code").val();
@@ -38,6 +113,8 @@ function consultar() {
     },
   });
 }
+
+
 /* -------- RESULTADO FORM ELMINAR */
 function eliminar() {
   if (confirm("¿Seguro que deseas eliminar este elemento?")) {

@@ -16,7 +16,6 @@
         <div class='form'><label>Codigo:</label><input type='text' id='codigo' value=''></div>
         <div class='form'><label>Nombre:</label><input type='text' id='nombre' value=''></div>
         <div class='input'><input id="botonEliminar" type='button' onclick='eliminar()' value='ELIMINAR'></div>
-       
     </form>
     
     <div id="resultado"></div>

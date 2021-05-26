@@ -10,23 +10,20 @@
   <script language="JavaScript" type="text/javascript" src="js/funciones.js"></script>
   <link rel="stylesheet" href="css/estilo.css" type="text/css" />
   <link rel="stylesheet" href="css/estiloFormulario.css" type="text/css" />
-
-
 </head>
-
 <body>
   <form action="#" method="POST" class='formulario' autocomplete="off">
-    <div class='form'><label>Codigo:</label><input type='text' id="code" value=''></div>
+    <div class='form'><label>Codigo:</label><input type='text' id="codigo" value=''></div>
     <div class='form'><label>Nombre:</label><input type='text' id="nombre" value=''></div>
-    <div class='input'><input id="botonBuscar" onclick="consultar()" type='button' value='BUSCAR'></div>
   </form>
+  <div class='input'><input id="botonBuscar" onclick="consultarR()" type='button' value='BUSCAR'></div>
   <div id="resultado"></div>
-  <script>
+<!--   <script>
     $('#botonBuscar').click(function() {
       $('#resultado').show();
       $('#resultado').delay(3000).hide(100);
     });
-  </script>
+  </script> -->
 
 </body>
 

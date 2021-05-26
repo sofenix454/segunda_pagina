@@ -103,9 +103,11 @@ main {
 #resultado {
   height: 100%;
   display: flex;
-  justify-content: left;
+  align-items: left;
   width: 90%;
   padding: 10px;
+  flex-direction: column;
+  overflow: hidden;
 }
 #main_contenido:hover {
   box-shadow: 0 4px 10px rgba(17, 29, 48, 0.26);
